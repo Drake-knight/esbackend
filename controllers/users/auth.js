@@ -27,8 +27,8 @@ const setCookies = (res, data) => {
   //Secure the cookie (check if it was set with the domain mentioned and not locally)
   const opts = IS_PRODUCTION
     ? {
-        domain: "esummitiitm.org"
-      }
+      domain: "esummit-iitm.netlify.app"
+    }
     : {};
 
   res.cookie(ESUMMIT_IITM_AUTH_TOKEN, token, {
@@ -359,8 +359,8 @@ export const logout = async (req, res) => {
   try {
     const opts = IS_PRODUCTION
       ? {
-          domain: "esummitiitm.org"
-        }
+        domain: "esummitiitm.org"
+      }
       : {};
 
     //Clear all the Cookies that was set (Check the function directSoloEventRegister)
