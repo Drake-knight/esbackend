@@ -23,7 +23,7 @@ const setCookies = (res, data) => {
   // eslint-disable-next-line no-unused-vars
   const { participatedEvents, ...forToken } = data;
   const token = jwt.sign(forToken, ESUMMIT_SECRET);
-
+  console.log(forToken)
   //Secure the cookie (check if it was set with the domain mentioned and not locally)
   const opts = IS_PRODUCTION
     ? {
