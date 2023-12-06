@@ -19,29 +19,35 @@ const IS_PRODUCTION = process.env.NODE_ENV === "production";
 
 //setting cookies in user's PC locally.
 
-const setCookies = (res, data) => {
+const setCookies = async (res, data) => {
   // eslint-disable-next-line no-unused-vars
-  const { participatedEvents, ...forToken } = data;
-  const token = jwt.sign(forToken, ESUMMIT_SECRET);
-  console.log(forToken)
-  //Secure the cookie (check if it was set with the domain mentioned and not locally)
-  const opts = IS_PRODUCTION
-    ? {
-      sameSite: "None",  // Add SameSite attribute
-      secure: true       // Add Secure attribute
-    }
-    : {};
+  try {
+    // eslint-disable-next-line no-unused-vars
+    const { participatedEvents, ...forToken } = data;
+    const token = jwt.sign(forToken, ESUMMIT_SECRET);
 
-  res.cookie(ESUMMIT_IITM_AUTH_TOKEN, token, {
-    secure: IS_PRODUCTION, //It is just for adding an extra layer to the security
-    httpOnly: true,
-    ...opts
-  });
+    //Secure the cookie (check if it was set with the domain mentioned and not locally)
+    const opts = IS_PRODUCTION
+      ? {
+        sameSite: "None",  // Add SameSite attribute
+        secure: true       // Add Secure attribute
+      }
+      : {};
 
-  res.cookie(ESUMMIT_IITM_USER, JSON.stringify(data), {
-    secure: IS_PRODUCTION,
-    ...opts
-  });
+    res.cookie(ESUMMIT_IITM_AUTH_TOKEN, token, {
+      secure: IS_PRODUCTION, //It is just for adding an extra layer to the security
+      httpOnly: true,
+      ...opts
+    });
+
+    res.cookie(ESUMMIT_IITM_USER, JSON.stringify(data), {
+      secure: IS_PRODUCTION,
+      ...opts
+    });
+  }
+  catch (error) {
+    console.log(error);
+  }
 };
 
 //Regstering the participants if it is a solo event.
