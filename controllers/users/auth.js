@@ -264,7 +264,8 @@ export const login = async (req, res) => {
     console.log(email);
 
     setCookies(res, { name, _id, email, summitID, participatedEvents });
-
+    console.log(user.summitID,
+      newlyRegistered, user.participatedEvents.includes(fromEvent))
     return res.json({
       summitID: user.summitID,
       newlyRegistered,
