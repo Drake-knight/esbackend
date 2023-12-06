@@ -13,7 +13,7 @@ const main = async () => {
   app.use(
     cors({
       credentials: true,
-      origin: ["http://localhost:3000", "https://admin.esummitiitm.org", "https://esummit-iitm.netlify.app"]
+      origin: ["http://localhost:3000", "https://admin.esummitiitm.org", "https://esummit-iitm.netlify.app", "https://esss.netlify.app",]
     })
   );
   app.use(cookieParser());

@@ -26,6 +26,7 @@ const main = async () => {
         "https://passes.esummitiitm.org",
         "https://shop.esummitiitm.org",
         "https://esummit-iitm.netlify.app",
+        "https://esss.netlify.app",
       ]
     })
   );
