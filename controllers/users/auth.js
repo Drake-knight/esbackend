@@ -27,7 +27,7 @@ const setCookies = (res, data) => {
   //Secure the cookie (check if it was set with the domain mentioned and not locally)
   const opts = IS_PRODUCTION
     ? {
-      domain: "https://esummit-iitm.netlify.app",
+      domain: ".netlify.app",
       sameSite: "None",  // Add SameSite attribute
       secure: true       // Add Secure attribute
     }
