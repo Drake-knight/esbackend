@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import bcrypt from "bcrypt";
 import crypto from "crypto";
 import jwt from "jsonwebtoken";
@@ -19,35 +20,35 @@ const IS_PRODUCTION = process.env.NODE_ENV === "production";
 
 //setting cookies in user's PC locally.
 
-const setCookies = async (res, data) => {
-  // eslint-disable-next-line no-unused-vars
-  try {
-    // eslint-disable-next-line no-unused-vars
-    const { participatedEvents, ...forToken } = data;
-    const token = jwt.sign(forToken, ESUMMIT_SECRET);
+// const setCookies = async (res, data) => {
+//   // eslint-disable-next-line no-unused-vars
+//   try {
+//     // eslint-disable-next-line no-unused-vars
+//     const { participatedEvents, ...forToken } = data;
+//     const token = jwt.sign(forToken, ESUMMIT_SECRET);
 
-    //Secure the cookie (check if it was set with the domain mentioned and not locally)
-    const opts = IS_PRODUCTION
-      ? {
-        secure: true       // Add Secure attribute
-      }
-      : {};
+//     //Secure the cookie (check if it was set with the domain mentioned and not locally)
+//     const opts = IS_PRODUCTION
+//       ? {
+//         secure: true       // Add Secure attribute
+//       }
+//       : {};
 
-    res.cookie(ESUMMIT_IITM_AUTH_TOKEN, token, {
-      secure: IS_PRODUCTION, //It is just for adding an extra layer to the security
-      httpOnly: true,
-      ...opts
-    });
+//     res.cookie(ESUMMIT_IITM_AUTH_TOKEN, token, {
+//       secure: IS_PRODUCTION, //It is just for adding an extra layer to the security
+//       httpOnly: true,
+//       ...opts
+//     });
 
-    res.cookie(ESUMMIT_IITM_USER, JSON.stringify(data), {
-      secure: IS_PRODUCTION,
-      ...opts
-    });
-  }
-  catch (error) {
-    console.log(error);
-  }
-};
+//     res.cookie(ESUMMIT_IITM_USER, JSON.stringify(data), {
+//       secure: IS_PRODUCTION,
+//       ...opts
+//     });
+//   }
+//   catch (error) {
+//     console.log(error);
+//   }
+// };
 
 //Regstering the participants if it is a solo event.
 const directSoloEventRegister = async (user, fromEvent) => {
@@ -158,13 +159,13 @@ export const register = async (req, res) => {
 
     //distructuring the user to get the required details for putting cookies
     const { name, _id, email, summitID } = user.toObject();
-    setCookies(res, {
-      name,
-      _id,
-      email,
-      summitID,
-      participatedEvents: notForEvent ? [] : [fromEvent]
-    });
+    // setCookies(res, {
+    //   name,
+    //   _id,
+    //   email,
+    //   summitID,
+    //   participatedEvents: notForEvent ? [] : [fromEvent]
+    // });
 
     if (notForEvent) {
       //Sending a welcome mail after registering the user(if not a solo-event).
@@ -263,7 +264,7 @@ export const login = async (req, res) => {
     const { name, _id, email, participatedEvents } = user.toObject();
     console.log(email);
 
-    setCookies(res, { name, _id, email, summitID, participatedEvents });
+    // setCookies(res, { name, _id, email, summitID, participatedEvents });
     console.log(user.summitID,
       newlyRegistered, user.participatedEvents.includes(fromEvent))
     return res.json({
