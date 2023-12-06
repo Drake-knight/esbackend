@@ -1,0 +1,10 @@
+node_modules
+
+# logs
+running-debug.log
+running-errors.log
+running-warnings.log
+
+# jsons
+adminPasswordInfo.json
+caReferralCodes.*
