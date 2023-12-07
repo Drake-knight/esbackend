@@ -30,6 +30,8 @@ const setCookies = (res, data) => {
   const opts = IS_PRODUCTION
     ? {
       domain: "es-wy7j.onrender.com",
+
+      sameSite: "None"
     }
     : {};
 
