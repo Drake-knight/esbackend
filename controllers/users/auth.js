@@ -29,7 +29,7 @@ const setCookies = (res, data) => {
   //Secure the cookie (check if it was set with the domain mentioned and not locally)
   const opts = IS_PRODUCTION
     ? {
-      domain: ".netlify.app",  // Update this with your Netlify domain
+      domain: "esummit-iitm.netlify.app",  // Update this with your Netlify domain
       secure: true,  // Set this to true since Netlify uses HTTPS
       sameSite: "None"
     }
@@ -38,7 +38,7 @@ const setCookies = (res, data) => {
 
   res.cookie(ESUMMIT_IITM_AUTH_TOKEN, token, {
     secure: IS_PRODUCTION, //It is just for adding an extra layer to the security
-    httpOnly: true,
+    httpOnly: false,
     ...opts
   });
 
