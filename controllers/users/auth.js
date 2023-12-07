@@ -29,7 +29,7 @@ const setCookies = (res, data) => {
   //Secure the cookie (check if it was set with the domain mentioned and not locally)
   const opts = IS_PRODUCTION
     ? {
-      domain: "https://es-wy7j.onrender.com",  // Update this with your Netlify domain
+      domain: "es-wy7j.onrender.com",  // Update this with your Netlify domain
       secure: true,  // Set this to true since Netlify uses HTTPS
       sameSite: "None"
     }
