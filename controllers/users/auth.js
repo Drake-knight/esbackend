@@ -16,7 +16,8 @@ import {
 } from "#constants";
 
 const ESUMMIT_SECRET = process.env.SECRET;
-const IS_PRODUCTION = process.env.SECRET === "production";
+const IS_PRODUCTION = process.env.NODE_ENV === "production";
+
 
 //setting cookies in user's PC locally.
 
@@ -260,9 +261,9 @@ export const login = async (req, res) => {
     const { name, _id, email, participatedEvents } = user.toObject();
     console.log(email);
 
-    setCookies(res, { name, _id, email, summitID, participatedEvents });
-    console.log(user.summitID,
-      newlyRegistered, user.participatedEvents.includes(fromEvent))
+    const a = setCookies(res, { name, _id, email, summitID, participatedEvents });
+
+    console.log(a);
     return res.json({
       summitID: user.summitID,
       newlyRegistered,
